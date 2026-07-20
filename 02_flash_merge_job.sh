@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ddda_flash
-#SBATCH --account=def-glettre
+#SBATCH --account=YOUR_ACCOUNT  # EDIT ME
 #SBATCH --time=04:00:00
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=32G
@@ -10,8 +10,8 @@
 #SBATCH --error=02_flash_%j.err
 
 # Setup environment
-cd ~/links/projects/rrg-glettre/jordy2/programs/
-source dna_env/bin/activate
+cd /PATH/TO/YOUR/PROGRAMS/  # EDIT ME
+source dna_env/bin/activate  # EDIT ME: your venv
 
 module load StdEnv/2023
 
@@ -19,7 +19,7 @@ module load StdEnv/2023
 export DISABLE_ZLIB_NG=1
 
 # Set paths
-WORK_DIR=~/links/projects/rrg-glettre/jordy2/library/2026_02_09_library
+WORK_DIR=/PATH/TO/YOUR/PROJECT  # EDIT ME
 FASTQ_DIR=${WORK_DIR}/fastq
 OUTPUT_DIR=${WORK_DIR}/output
 
@@ -36,8 +36,8 @@ echo "Job ID: $SLURM_JOB_ID"
 echo "Using temporary directory: ${TMP_DIR}"
 
 # Input FASTQ files (trimmed R1/R2 from previous step)
-R1_TRIMMED=${FASTQ_DIR}/NS.X0276.003.IndexR1_01.sample1_R1.trimmed.fastq
-R2_TRIMMED=${FASTQ_DIR}/NS.X0276.003.IndexR1_01.sample1_R2.trimmed.fastq
+R1_TRIMMED=${FASTQ_DIR}/sample1_R1.trimmed.fastq
+R2_TRIMMED=${FASTQ_DIR}/sample1_R2.trimmed.fastq
 
 # Check if input files exist
 if [ ! -f "${R1_TRIMMED}" ] || [ ! -f "${R2_TRIMMED}" ]; then
@@ -48,10 +48,10 @@ if [ ! -f "${R1_TRIMMED}" ] || [ ! -f "${R2_TRIMMED}" ]; then
 fi
 
 # Final output file path
-MERGED_FASTQ=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.merged.fastq
+MERGED_FASTQ=${OUTPUT_DIR}/sample1.merged.fastq
 
 # FLASH binary
-FLASH_BIN=~/links/projects/rrg-glettre/jordy2/programs/FLASH-1.2.11/flash
+FLASH_BIN=/PATH/TO/YOUR/PROGRAMS/FLASH-1.2.11/flash
 
 echo "Merge R1 and R2 reads using FLASH"
 ${FLASH_BIN} -t ${SLURM_CPUS_PER_TASK} -m 10 -M 150 \

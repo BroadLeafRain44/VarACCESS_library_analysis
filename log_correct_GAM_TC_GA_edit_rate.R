@@ -11,8 +11,8 @@
 
 library(mgcv)
 
-base_dir <- "/Users/jordanjalbert-ross/Desktop/MAITRISE/LAB/DRYLAB/library/2026_02_09_library/final"
-source(file.path(base_dir, "simple_scripts/library_helpers.R"))
+base_dir <- "/PATH/TO/YOUR/PROJECT"  # EDIT ME
+source(file.path(base_dir, "git_scripts/library_helpers.R"))  # EDIT if helpers live elsewhere
 
 eps <- 0.001
 out_dir <- file.path(base_dir, "clean_outputs")

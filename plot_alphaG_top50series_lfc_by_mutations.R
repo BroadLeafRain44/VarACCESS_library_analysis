@@ -6,8 +6,8 @@
 
 library(ggplot2)
 
-base_dir <- "/Users/jordanjalbert-ross/Desktop/MAITRISE/LAB/DRYLAB/library/2026_02_09_library/final"
-source(file.path(base_dir, "simple_scripts/library_helpers.R"))
+base_dir <- "/PATH/TO/YOUR/PROJECT"  # EDIT ME
+source(file.path(base_dir, "git_scripts/library_helpers.R"))  # EDIT if helpers live elsewhere
 
 top50_dnase_path <- file.path(base_dir, "data/top50series_dnase_scores_per_allele_16KB.tsv")
 seq_path <- file.path(base_dir, "data/varACCESS_DddA_firstlibrary.xlsx")

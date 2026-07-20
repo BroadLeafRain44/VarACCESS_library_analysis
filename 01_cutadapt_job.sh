@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ddda_cutadapt
-#SBATCH --account=def-glettre
+#SBATCH --account=YOUR_ACCOUNT  # EDIT ME
 #SBATCH --time=04:00:00
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
@@ -10,8 +10,8 @@
 #SBATCH --error=01_cutadapt_%j.err
 
 # Setup environment
-cd ~/links/projects/rrg-glettre/jordy2/programs/
-source dna_env/bin/activate
+cd /PATH/TO/YOUR/PROGRAMS/  # EDIT ME
+source dna_env/bin/activate  # EDIT ME: your venv
 
 module load StdEnv/2023
 module load python/3.10
@@ -20,7 +20,7 @@ module load python/3.10
 export DISABLE_ZLIB_NG=1
 
 # Set paths
-WORK_DIR=~/links/projects/rrg-glettre/jordy2/library/2026_02_09_library
+WORK_DIR=/PATH/TO/YOUR/PROJECT  # EDIT ME
 FASTQ_DIR=${WORK_DIR}/fastq
 
 mkdir -p ${FASTQ_DIR}
@@ -36,16 +36,16 @@ echo "Job ID: $SLURM_JOB_ID"
 echo "Using temporary directory: ${TMP_DIR}"
 
 # Input FASTQ files (raw R1/R2 from sequencer)
-R1_INPUT=${FASTQ_DIR}/NS.X0276.003.IndexR1_01.sample1_R1.fastq.gz
-R2_INPUT=${FASTQ_DIR}/NS.X0276.003.IndexR1_01.sample1_R2.fastq.gz
+R1_INPUT=${FASTQ_DIR}/sample1_R1.fastq.gz
+R2_INPUT=${FASTQ_DIR}/sample1_R2.fastq.gz
 
 # Temporary file paths
 TMP_R1_TRIMMED="${TMP_DIR}/R1_trimmed_${SLURM_JOB_ID}.fastq"
 TMP_R2_TRIMMED="${TMP_DIR}/R2_trimmed_${SLURM_JOB_ID}.fastq"
 
 # Final output file paths
-R1_TRIMMED=${FASTQ_DIR}/NS.X0276.003.IndexR1_01.sample1_R1.trimmed.fastq
-R2_TRIMMED=${FASTQ_DIR}/NS.X0276.003.IndexR1_01.sample1_R2.trimmed.fastq
+R1_TRIMMED=${FASTQ_DIR}/sample1_R1.trimmed.fastq
+R2_TRIMMED=${FASTQ_DIR}/sample1_R2.trimmed.fastq
 
 echo "Trim adapters from reads"
 cutadapt \

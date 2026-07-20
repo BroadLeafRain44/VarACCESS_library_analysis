@@ -7,8 +7,8 @@ library(ggplot2)
 library(dplyr)
 library(readr)
 
-base_dir <- "/Users/jordanjalbert-ross/Desktop/MAITRISE/LAB/DRYLAB/library/2026_02_09_library/final"
-source(file.path(base_dir, "simple_scripts/library_helpers.R"))
+base_dir <- "/PATH/TO/YOUR/PROJECT"  # EDIT ME
+source(file.path(base_dir, "git_scripts/library_helpers.R"))  # EDIT if helpers live elsewhere
 
 input_csv <- file.path(base_dir, "data/top_50_series.csv")
 output_plot <- file.path(simple_outputs_path(base_dir), "chrombpnet_score_by_mutations_trend.png")

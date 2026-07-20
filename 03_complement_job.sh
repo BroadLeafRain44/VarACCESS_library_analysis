@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ddda_complement
-#SBATCH --account=def-glettre
+#SBATCH --account=YOUR_ACCOUNT  # EDIT ME
 #SBATCH --time=02:00:00
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
@@ -9,15 +9,15 @@
 #SBATCH --output=03_complement_%j.out
 #SBATCH --error=03_complement_%j.err
 
-cd ~/links/projects/rrg-glettre/jordy2/programs/
-source dna_env/bin/activate
+cd /PATH/TO/YOUR/PROGRAMS/  # EDIT ME
+source dna_env/bin/activate  # EDIT ME: your venv
 
 module load StdEnv/2023
 module load python/3.10
 
 export DISABLE_ZLIB_NG=1
 
-WORK_DIR=~/links/projects/rrg-glettre/jordy2/library/2026_02_09_library
+WORK_DIR=/PATH/TO/YOUR/PROJECT  # EDIT ME
 OUTPUT_DIR=${WORK_DIR}/output
 TMP_DIR=${SLURM_TMPDIR:-/tmp}
 
@@ -41,9 +41,9 @@ echo "Job ID: $SLURM_JOB_ID"
 echo "Using temporary directory: ${TMP_DIR}"
 echo "Python script: ${PY_SCRIPT}"
 
-MERGED_FASTQ=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.merged.fastq
+MERGED_FASTQ=${OUTPUT_DIR}/sample1.merged.fastq
 TMP_COMPLEMENT="${TMP_DIR}/complement_${SLURM_JOB_ID}.fastq"
-MERGED_COMPLEMENT=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.merged.complement.fastq
+MERGED_COMPLEMENT=${OUTPUT_DIR}/sample1.merged.complement.fastq
 
 if [ ! -f "${MERGED_FASTQ}" ]; then
     echo "Error: Merged FASTQ file not found!"

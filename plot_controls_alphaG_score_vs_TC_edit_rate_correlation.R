@@ -6,8 +6,8 @@
 library(ggplot2)
 library(patchwork)
 
-base_dir <- "/Users/jordanjalbert-ross/Desktop/MAITRISE/LAB/DRYLAB/library/2026_02_09_library/final"
-source(file.path(base_dir, "simple_scripts/library_helpers.R"))
+base_dir <- "/PATH/TO/YOUR/PROJECT"  # EDIT ME
+source(file.path(base_dir, "git_scripts/library_helpers.R"))  # EDIT if helpers live elsewhere
 
 dnase_path <- file.path(base_dir, "data/library_controls_dnase_scores_ref_only.tsv")
 pred_path <- file.path(base_dir, "clean_outputs/log_correct_GAM_TC_GA_Edit_Rate_predictions.tsv")

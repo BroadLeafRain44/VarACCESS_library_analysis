@@ -6,8 +6,8 @@
 library(ggplot2)
 library(patchwork)
 
-base_dir <- "/Users/jordanjalbert-ross/Desktop/MAITRISE/LAB/DRYLAB/library/2026_02_09_library/final"
-source(file.path(base_dir, "simple_scripts/library_helpers.R"))
+base_dir <- "/PATH/TO/YOUR/PROJECT"  # EDIT ME
+source(file.path(base_dir, "git_scripts/library_helpers.R"))  # EDIT if helpers live elsewhere
 
 out_dir <- simple_outputs_path(base_dir)
 plot_raw_path <- file.path(out_dir, "TC_GA_edit_rate_reproducibility_replicates_raw.png")

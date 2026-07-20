@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ddda_filter_reads
-#SBATCH --account=def-glettre
+#SBATCH --account=YOUR_ACCOUNT  # EDIT ME
 #SBATCH --time=4:00:00
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
@@ -9,8 +9,8 @@
 #SBATCH --output=05_filter_reads_%j.out
 #SBATCH --error=05_filter_reads_%j.err
 
-cd ~/links/projects/rrg-glettre/jordy2/programs/
-source dna_env/bin/activate
+cd /PATH/TO/YOUR/PROGRAMS/  # EDIT ME
+source dna_env/bin/activate  # EDIT ME: your venv
 
 module load StdEnv/2023
 module load python/3.10
@@ -18,7 +18,7 @@ module load samtools
 
 export DISABLE_ZLIB_NG=1
 
-WORK_DIR=~/links/projects/rrg-glettre/jordy2/library/2026_02_09_library
+WORK_DIR=/PATH/TO/YOUR/PROJECT  # EDIT ME
 OUTPUT_DIR=${WORK_DIR}/output
 TMP_DIR=${SLURM_TMPDIR:-/tmp}
 
@@ -42,11 +42,11 @@ echo "Job ID: $SLURM_JOB_ID"
 echo "Using temporary directory: ${TMP_DIR}"
 echo "Python script: ${PY_SCRIPT}"
 
-BAM_INPUT=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.aligned.sorted.bam
+BAM_INPUT=${OUTPUT_DIR}/sample1.aligned.sorted.bam
 BAM_FILTERED_TMP="${TMP_DIR}/filtered_${SLURM_JOB_ID}.bam"
 BAM_FILTERED_SORTED_TMP="${TMP_DIR}/filtered_sorted_${SLURM_JOB_ID}.bam"
-BAM_FILTERED=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.filtered_189_190bp.bam
-BAM_FILTERED_SORTED=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.filtered_189_190bp.sorted.bam
+BAM_FILTERED=${OUTPUT_DIR}/sample1.filtered_189_190bp.bam
+BAM_FILTERED_SORTED=${OUTPUT_DIR}/sample1.filtered_189_190bp.sorted.bam
 
 TARGET_LENGTH_1=189
 TARGET_LENGTH_2=190

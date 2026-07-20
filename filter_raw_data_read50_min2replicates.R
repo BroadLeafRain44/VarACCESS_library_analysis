@@ -2,8 +2,8 @@
 # Filter complete_results Excel → clean_outputs/raw_data_read50_min2replicates.tsv
 # Keep rows with Read_Count >= 50, and only IDs with >= 2 such replicates (samples 1–3).
 
-base_dir <- "/Users/jordanjalbert-ross/Desktop/MAITRISE/LAB/DRYLAB/library/2026_02_09_library/final"
-source(file.path(base_dir, "simple_scripts/library_helpers.R"))
+base_dir <- "/PATH/TO/YOUR/PROJECT"  # EDIT ME
+source(file.path(base_dir, "git_scripts/library_helpers.R"))  # EDIT if helpers live elsewhere
 
 xlsx_path <- file.path(base_dir, "data/complete_results_2026_02_09.xlsx")
 out_path <- filtered_raw_data_path(base_dir)

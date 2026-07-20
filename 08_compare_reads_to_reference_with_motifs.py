@@ -338,69 +338,70 @@ def main():
 
 def run_all_samples():
     """Run compare_reads_with_motifs on all sample and ctrl BAMs. Ignores first 9 bases (barcode)."""
-    main_reference_fasta = 'reference/2026_02_09_reference.fasta'
-    complement_reference_fasta = 'reference/2026_02_09_reference_complement.fasta'
+    # EDIT ME: set reference FASTAs and BAM/output paths for your project
+    main_reference_fasta = 'reference/YOUR_REFERENCE.fasta'
+    complement_reference_fasta = 'reference/YOUR_REFERENCE_complement.fasta'
 
     # sample1 main and complement
     results_sample1_main, motif_info_sample1_main = compare_reads_with_motifs(
-        'output/NS.X0276.003.IndexR1_01.sample1.filtered_189_190bp.sorted.bam',
+        'output/sample1.filtered_189_190bp.sorted.bam',
         main_reference_fasta,
-        output='results_2026_02_09_sample1_main_motifs.tsv',
+        output='results_sample1_main_motifs.tsv',
         max_references=None,
         ignore_first_n_bases=9,
     )
     results_sample1_complement, motif_info_sample1_complement = compare_reads_with_motifs(
-        'output/NS.X0276.003.IndexR1_01.sample1.filtered_189_190bp.complement.sorted.bam',
+        'output/sample1.filtered_189_190bp.complement.sorted.bam',
         complement_reference_fasta,
-        output='results_2026_02_09_sample1_complement_motifs.tsv',
+        output='results_sample1_complement_motifs.tsv',
         max_references=None,
         ignore_first_n_bases=9,
     )
 
     # sample2 main and complement
     results_sample2_main, motif_info_sample2_main = compare_reads_with_motifs(
-        'output/NS.X0276.003.IndexR1_02.sample2.filtered_189_190bp.sorted.bam',
+        'output/sample2.filtered_189_190bp.sorted.bam',
         main_reference_fasta,
-        output='results_2026_02_09_sample2_main_motifs.tsv',
+        output='results_sample2_main_motifs.tsv',
         max_references=None,
         ignore_first_n_bases=9,
     )
     results_sample2_complement, motif_info_sample2_complement = compare_reads_with_motifs(
-        'output/NS.X0276.003.IndexR1_02.sample2.filtered_189_190bp.complement.sorted.bam',
+        'output/sample2.filtered_189_190bp.complement.sorted.bam',
         complement_reference_fasta,
-        output='results_2026_02_09_sample2_complement_motifs.tsv',
+        output='results_sample2_complement_motifs.tsv',
         max_references=None,
         ignore_first_n_bases=9,
     )
 
     # sample3 main and complement
     results_sample3_main, motif_info_sample3_main = compare_reads_with_motifs(
-        'output/NS.X0276.003.IndexR1_03.sample3.filtered_189_190bp.sorted.bam',
+        'output/sample3.filtered_189_190bp.sorted.bam',
         main_reference_fasta,
-        output='results_2026_02_09_sample3_main_motifs.tsv',
+        output='results_sample3_main_motifs.tsv',
         max_references=None,
         ignore_first_n_bases=9,
     )
     results_sample3_complement, motif_info_sample3_complement = compare_reads_with_motifs(
-        'output/NS.X0276.003.IndexR1_03.sample3.filtered_189_190bp.complement.sorted.bam',
+        'output/sample3.filtered_189_190bp.complement.sorted.bam',
         complement_reference_fasta,
-        output='results_2026_02_09_sample3_complement_motifs.tsv',
+        output='results_sample3_complement_motifs.tsv',
         max_references=None,
         ignore_first_n_bases=9,
     )
 
     # ctrl1 main and complement
     results_ctrl1_main, motif_info_ctrl1_main = compare_reads_with_motifs(
-        'output/NS.X0276.003.IndexR1_05.ctrl1.filtered_189_190bp.sorted.bam',
+        'output/ctrl1.filtered_189_190bp.sorted.bam',
         main_reference_fasta,
-        output='results_2026_02_09_ctrl1_main_motifs.tsv',
+        output='results_ctrl1_main_motifs.tsv',
         max_references=None,
         ignore_first_n_bases=9,
     )
     results_ctrl1_complement, motif_info_ctrl1_complement = compare_reads_with_motifs(
-        'output/NS.X0276.003.IndexR1_05.ctrl1.filtered_189_190bp.complement.sorted.bam',
+        'output/ctrl1.filtered_189_190bp.complement.sorted.bam',
         complement_reference_fasta,
-        output='results_2026_02_09_ctrl1_complement_motifs.tsv',
+        output='results_ctrl1_complement_motifs.tsv',
         max_references=None,
         ignore_first_n_bases=9,
     )

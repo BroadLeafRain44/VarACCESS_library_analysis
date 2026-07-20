@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ddda_align
-#SBATCH --account=def-glettre
+#SBATCH --account=YOUR_ACCOUNT  # EDIT ME
 #SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
@@ -10,8 +10,8 @@
 #SBATCH --error=04_align_%j.err
 
 # Setup environment
-cd ~/links/projects/rrg-glettre/jordy2/programs/
-source dna_env/bin/activate
+cd /PATH/TO/YOUR/PROGRAMS/  # EDIT ME
+source dna_env/bin/activate  # EDIT ME: your venv
 
 module load StdEnv/2023
 module load python/3.10 
@@ -22,7 +22,7 @@ module load samtools
 export DISABLE_ZLIB_NG=1
 
 # Set paths
-WORK_DIR=~/links/projects/rrg-glettre/jordy2/library/2026_02_09_library
+WORK_DIR=/PATH/TO/YOUR/PROJECT  # EDIT ME
 REF_DIR=${WORK_DIR}/reference
 OUTPUT_DIR=${WORK_DIR}/output
 
@@ -39,8 +39,8 @@ echo "Job ID: $SLURM_JOB_ID"
 echo "Using temporary directory: ${TMP_DIR}"
 
 # Input FASTQ files (merged and complement from previous steps)
-MERGED_FASTQ=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.merged.fastq
-MERGED_COMPLEMENT=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.merged.complement.fastq
+MERGED_FASTQ=${OUTPUT_DIR}/sample1.merged.fastq
+MERGED_COMPLEMENT=${OUTPUT_DIR}/sample1.merged.complement.fastq
 
 # Check if input files exist
 if [ ! -f "${MERGED_FASTQ}" ]; then
@@ -56,8 +56,8 @@ if [ ! -f "${MERGED_COMPLEMENT}" ]; then
 fi
 
 # Reference files
-REF_FASTA=${REF_DIR}/2026_02_09_reference.fasta
-REF_COMPLEMENT=${REF_DIR}/2026_02_09_reference_complement.fasta
+REF_FASTA=${REF_DIR}/YOUR_REFERENCE.fasta
+REF_COMPLEMENT=${REF_DIR}/YOUR_REFERENCE_complement.fasta
 
 # Temporary file paths for main alignment
 TMP_SAM="${TMP_DIR}/aligned_${SLURM_JOB_ID}.sam"
@@ -70,14 +70,14 @@ TMP_BAM_COMPLEMENT="${TMP_DIR}/aligned_complement_${SLURM_JOB_ID}.bam"
 TMP_BAM_SORTED_COMPLEMENT="${TMP_DIR}/aligned_sorted_complement_${SLURM_JOB_ID}.bam"
 
 # Final output file paths for main alignment
-SAM_FILE=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.aligned.sam
-BAM_FILE=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.aligned.bam
-BAM_SORTED=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.aligned.sorted.bam
+SAM_FILE=${OUTPUT_DIR}/sample1.aligned.sam
+BAM_FILE=${OUTPUT_DIR}/sample1.aligned.bam
+BAM_SORTED=${OUTPUT_DIR}/sample1.aligned.sorted.bam
 
 # Final output file paths for complement alignment
-SAM_FILE_COMPLEMENT=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.aligned.complement.sam
-BAM_FILE_COMPLEMENT=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.aligned.complement.bam
-BAM_SORTED_COMPLEMENT=${OUTPUT_DIR}/NS.X0276.003.IndexR1_01.sample1.aligned.complement.sorted.bam
+SAM_FILE_COMPLEMENT=${OUTPUT_DIR}/sample1.aligned.complement.sam
+BAM_FILE_COMPLEMENT=${OUTPUT_DIR}/sample1.aligned.complement.bam
+BAM_SORTED_COMPLEMENT=${OUTPUT_DIR}/sample1.aligned.complement.sorted.bam
 
 echo "Index reference sequences"
 bwameth.py index ${REF_FASTA}
